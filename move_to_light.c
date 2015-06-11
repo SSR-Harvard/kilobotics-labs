@@ -64,6 +64,7 @@ void sample_light()
         }
     }
 
+    // Compute the average.
     current_light = sum / number_of_samples;
 }
 
