@@ -65,8 +65,6 @@ void sample_light()
     current_light = sum / number_of_samples;
 }
 
-
-
 void setup()
 {
 }
