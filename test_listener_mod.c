@@ -17,29 +17,29 @@ void loop()
 		// Near ...
 		if (distance <= 50)
 		{
-			// ... and odd: set LED blue.
-			if (odd == 1)
-			{
-				set_color(RGB(0, 0, 1));
-			}
 			// ... and even: set LED red.
-			else
+			if (odd == 0)
 			{
 				set_color(RGB(1, 0, 0));
+			}
+			// ... and odd: set LED blue.
+			else
+			{
+				set_color(RGB(0, 0, 1));
 			}
 		}
 		// Far ...
 		else
 		{
-			// ... and odd: set LED cyan.
-			if (odd == 1)
-			{
-				set_color(RGB(0, 1, 1));
-			}
 			// ... and even: set LED magenta.
-			else
+			if (odd == 0)
 			{
 				set_color(RGB(1, 0, 1)); // blink magenta
+			}
+			// ... and odd: set LED cyan.
+			else
+			{
+				set_color(RGB(0, 1, 1));
 			}
 		}
 
