@@ -26,7 +26,8 @@ void message_rx(message_t *message, distance_measurement_t *distance)
     new_message = 1;
 }
 
-int main() {
+int main()
+{
     kilo_init();
     // Register message_rx callback function.
     kilo_message_rx = message_rx;
