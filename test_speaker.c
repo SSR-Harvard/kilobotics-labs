@@ -6,13 +6,10 @@ message_t message;
 void setup()
 {
 	// Initialize message:
-	
 	// The type is always NORMAL.
 	message.type = NORMAL;
-	
 	// Some dummy data as an example.
 	message.data[0] = 0;
-	
 	// It's important that the CRC is computed *after* the data has been set;
 	// otherwise it would be wrong.
 	message.crc = message_crc(&message);
