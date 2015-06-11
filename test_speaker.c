@@ -1,7 +1,8 @@
 #include <kilolib.h>
 
-int message_sent = 0;
 message_t message;
+// Flag to keep track of message transmission.
+int message_sent = 0;
 
 void setup()
 {
@@ -10,7 +11,7 @@ void setup()
     message.type = NORMAL;
     // Some dummy data as an example.
     message.data[0] = 0;
-    // It's important that the CRC is computed *after* the data has been set;
+    // It's important that the CRC is computed after the data has been set;
     // otherwise it would be wrong.
     message.crc = message_crc(&message);
 }
@@ -34,9 +35,9 @@ message_t *message_tx()
     return &message;
 }
 
-// Set flag on message transmission.
 void message_tx_success()
 {
+    // Set flag on message transmission.
     message_sent = 1;
 }
 
