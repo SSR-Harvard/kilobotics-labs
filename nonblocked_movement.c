@@ -7,6 +7,8 @@
 
 // Declare variables.
 int state;
+// We need an unsigned 32-bit integer to store clock ticks;
+// a regular int would overflow.
 uint32_t last_state_update;
 
 void setup()
