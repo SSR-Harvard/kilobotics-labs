@@ -9,11 +9,11 @@ void loop()
 {
     // Put the main code here. This is run repeatedly.
     
-    // Turn LED blue.
+    // Set LED blue.
     set_color(RGB(0, 0, 1));
     // Wait half a second (500 ms).
     delay(500);
-    // Turn LED red.
+    // Set LED red.
     set_color(RGB(1, 0, 0));
     // Wait half a second (500 ms).
     delay(500);
