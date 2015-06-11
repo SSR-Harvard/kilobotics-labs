@@ -61,9 +61,7 @@ void message_rx(message_t *message, distance_measurement_t *distance_measurement
 int main()
 {
 	kilo_init();
-
 	kilo_message_rx = message_rx;
-
 	kilo_start(setup, loop);
 
 	return 0;
