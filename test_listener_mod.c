@@ -1,8 +1,8 @@
 #include <kilolib.h>
 
-uint8_t new_message = 0;
-uint8_t distance = 0;
-uint8_t odd = 0;
+int new_message = 0;
+int distance = 0;
+int odd = 0;
 
 void setup()
 {
