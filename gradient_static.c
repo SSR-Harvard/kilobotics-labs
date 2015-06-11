@@ -18,6 +18,7 @@ void setup()
         own_gradient = 0;
     }
     
+    // Compute the message.
     message.type = NORMAL;
     message.data[0] = own_gradient;
     message.crc = message_crc(&message);
@@ -32,6 +33,7 @@ void loop() {
         {
             own_gradient = received_gradient + 1;
             
+            // Update the message whenever the gradient changes.
             message.type = NORMAL;
             message.data[0] = own_gradient;
             message.crc = message_crc(&message);
