@@ -42,11 +42,11 @@ void loop()
                 set_color(RGB(0, 1, 1));
             }
         }
+        
+        // Wherever you are: set LED off after 100 ms to achieve blink effect.
+        delay(100);
+        set_color(RGB(0, 0, 0));
     }
-    
-    // Wherever you are: set LED off after 100 ms to achieve blink effect.
-    delay(100);
-    set_color(RGB(0, 0, 0));
 }
 
 void message_rx(message_t *message, distance_measurement_t *distance_measurement)
