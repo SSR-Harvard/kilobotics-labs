@@ -49,8 +49,7 @@ void loop()
 	}
 }
 
-void message_rx(message_t *message,
-		distance_measurement_t *distance_measurement)
+void message_rx(message_t *message, distance_measurement_t *distance_measurement)
 {
 	// Set message reception flag.
 	new_message = 1;
