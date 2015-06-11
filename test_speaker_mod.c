@@ -11,7 +11,6 @@ void setup()
 
 void loop()
 {
-
 	// Toggle even/odd message every 64 clock ticks (roughly 2 seconds).
 	if (kilo_ticks > message_last_changed + 64)
 	{
