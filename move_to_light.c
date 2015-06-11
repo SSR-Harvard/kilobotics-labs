@@ -43,10 +43,12 @@ void set_motion(int new_motion)
     }
 }
 
-// The ambient light sensor gives noisy readings. To mitigate this,
-// we take the average of 300 samples in quick succession.
+// Function for light sampling.
 void sample_light()
 {
+    // The ambient light sensor gives noisy readings. To mitigate this,
+    // we take the average of 300 samples in quick succession.
+    
     int number_of_samples = 0;
     int sum = 0;
 
