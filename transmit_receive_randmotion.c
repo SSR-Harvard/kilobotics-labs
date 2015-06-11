@@ -11,7 +11,7 @@ message_t message;
 uint32_t last_motion_update = 0;
 
 // Function to handle motion.
-void set_motion(uint8_t new_motion)
+void set_motion(int new_motion)
 {
     // We only need to take an action if the motion is being changed.
     if (current_motion != new_motion)
