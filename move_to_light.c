@@ -43,7 +43,7 @@ void set_motion(int new_motion)
     }
 }
 
-// Function for light sampling.
+// Function to sample light.
 void sample_light()
 {
     // The ambient light sensor gives noisy readings. To mitigate this,
