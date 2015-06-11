@@ -1,5 +1,6 @@
 #include <kilolib.h>
 
+int message_sent = 0;
 message_t message;
 
 void setup()
@@ -19,8 +20,16 @@ void setup()
 
 void loop()
 {
-	// No need for any code here in this case. Everything is being taken care
-	// of by the message_tx and message_tx_success callback functions.
+	// Blink LED magenta whenever a message is sent.
+	if (message_sent == 1)
+	{
+		// Reset flag so LED is only blinked once per message.
+		message_sent = 0;
+		
+		set_color(RGB(1, 0, 1));
+		delay(20);
+		set_color(RGB(0, 0, 0));
+	}
 }
 
 message_t *message_tx()
@@ -30,10 +39,7 @@ message_t *message_tx()
 
 void message_tx_success()
 {
-	// Blink LED magenta whenever a message is sent.
-	set_color(RGB(1, 0, 1));
-	delay(20);
-	set_color(RGB(0, 0, 0));
+	message_sent = 1;
 }
 
 int main()
