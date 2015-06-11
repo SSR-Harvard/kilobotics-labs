@@ -78,7 +78,8 @@ void message_rx(message_t *m, distance_measurement_t *d)
     received_gradient = m->data[0];
 }
 
-int main() {
+int main()
+{
     kilo_init();
     kilo_message_rx = message_rx;
     kilo_message_tx = message_tx;
