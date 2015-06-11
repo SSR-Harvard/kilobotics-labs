@@ -16,7 +16,8 @@ void sample_light()
     int number_of_samples = 0;
     int sum = 0;
 
-    while (number_of_samples < 300) {
+    while (number_of_samples < 300)
+    {
         int sample = get_ambientlight();
         
         // -1 indicate a failed sample, which should be discarded.
@@ -36,7 +37,8 @@ void setup()
 {
 }
 
-void loop() {
+void loop()
+{
     sample_light();
     
     if (current_light < THRESH_LO)
@@ -49,7 +51,8 @@ void loop() {
     }
 }
 
-int main() {
+int main()
+{
     kilo_init();
     kilo_start(setup, loop);
 
