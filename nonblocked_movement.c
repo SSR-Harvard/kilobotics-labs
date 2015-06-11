@@ -39,7 +39,6 @@ void loop()
 
 			// Set next state.
 			state = RIGHT_BLUE;
-
 		}
 		else if (state == RIGHT_BLUE)
 		{
