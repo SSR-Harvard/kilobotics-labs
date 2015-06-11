@@ -48,7 +48,6 @@ void setup()
 
 void loop()
 {
-
 	if (kilo_ticks > last_motion_update + 32)
 	{
 		// If a message was received in the last second, set a random motion.
