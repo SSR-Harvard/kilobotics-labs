@@ -39,8 +39,8 @@ void loop()
 
 int main()
 {
-	kilo_init();
-	kilo_start(setup, loop);
-
-	return 0;
+    kilo_init();
+    kilo_start(setup, loop);
+    
+    return 0;
 }
