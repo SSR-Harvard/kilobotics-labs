@@ -99,12 +99,12 @@ void loop()
 
 void message_rx(message_t *m, distance_measurement_t *d)
 {
-new_me  ssage = 1;
+    new_message = 1;
 }
 
 message_t *message_tx()
 {
-return &    message;
+    return &message;
 }
 
 int main()
