@@ -10,7 +10,7 @@ int new_message = 0;
 message_t message;
 uint32_t last_motion_update = 0;
 
-// Function to set new motion.
+// Function to handle motion.
 void set_motion(uint8_t new_motion)
 {
 	// We only need to take an action if the motion is being changed.
