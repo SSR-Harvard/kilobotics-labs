@@ -31,9 +31,9 @@ message_t *message_tx()
 void message_tx_success()
 {
 	// Blink LED magenta whenever a message is sent.
-	set_color(RGB(1,0,1));
+	set_color(RGB(1, 0, 1));
 	delay(20);
-	set_color(RGB(0,0,0));
+	set_color(RGB(0, 0, 0));
 }
 
 int main()
