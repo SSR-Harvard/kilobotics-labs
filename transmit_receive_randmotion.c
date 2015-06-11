@@ -8,7 +8,7 @@
 int current_motion = STOP;
 int new_message = 0;
 message_t message;
-uint32_t last_motion_update;
+uint32_t last_motion_update = 0;
 
 // Function to set new motion.
 void set_motion(uint8_t new_motion)
@@ -50,6 +50,8 @@ void loop()
 {
 	if (kilo_ticks > last_motion_update + 32)
 	{
+		last_motion_update = kilo_ticks;
+		
 		// If a message was received in the last second, set a random motion.
 		if (new_message == 1)
 		{
