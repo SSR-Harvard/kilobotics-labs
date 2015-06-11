@@ -1,6 +1,7 @@
 #include <kilolib.h>
 
-uint8_t new_message = 0;
+// Flag to keep track of new messages.
+int new_message = 0;
 
 void setup()
 {
@@ -20,9 +21,9 @@ void loop()
     }
 }
 
-// Set flag on message reception.
 void message_rx(message_t *message, distance_measurement_t *distance)
 {
+    // Set flag on message reception.
     new_message = 1;
 }
 
