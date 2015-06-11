@@ -1,6 +1,7 @@
 #include <kilolib.h>
 
 // Constant for orbit control.
+#define TOO_CLOSE_DISTANCE 40
 #define DESIRED_DISTANCE 60
 
 // Constants for motion handling function.
@@ -54,13 +55,23 @@ void loop()
     {
         new_message = 0;
         
-        if (distance < DESIRED_DISTANCE)
+        // If too close, move forward to get back into orbit.
+        if (distance < TOO_CLOSE_DISTANCE)
         {
-            set_motion(LEFT);
+            set_motion(FORWARD);
         }
+        // If not too close, turn left or right depending on distance,
+        // to maintain orbit.
         else
         {
-            set_motion(RIGHT);
+            if (distance < DESIRED_DISTANCE)
+            {
+                set_motion(LEFT);
+            }
+            else
+            {
+                set_motion(RIGHT);
+            }
         }
     }
 }
