@@ -34,7 +34,7 @@ void loop()
 			// ... and even: set LED magenta.
 			if (odd == 0)
 			{
-				set_color(RGB(1, 0, 1)); // blink magenta
+				set_color(RGB(1, 0, 1));
 			}
 			// ... and odd: set LED cyan.
 			else
