@@ -24,7 +24,7 @@ void loop()
 		message_sent = 0;
 		
 		set_color(RGB(1, 0, 1));
-		delay(20);
+		delay(100);
 		set_color(RGB(0, 0, 0));
 	}
 }
@@ -34,6 +34,7 @@ message_t *message_tx()
 	return &message;
 }
 
+// Set flag on message transmission.
 void message_tx_success()
 {
 	message_sent = 1;
