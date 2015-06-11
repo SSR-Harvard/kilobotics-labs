@@ -54,7 +54,7 @@ void loop()
     {
         new_message = 0;
         
-        if (current_distance < DESIRED_DISTANCE)
+        if (distance < DESIRED_DISTANCE)
         {
             set_motion(LEFT);
         }
