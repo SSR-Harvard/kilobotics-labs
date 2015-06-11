@@ -4,8 +4,8 @@ message_t message;
 
 void setup() {
   // Initialize message:
-
-	// The type is almost always NORMAL.
+  
+  // The type is almost always NORMAL.
   message.type = NORMAL;
 
   // Some dummy data as an example.
