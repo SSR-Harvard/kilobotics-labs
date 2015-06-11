@@ -28,7 +28,7 @@ void loop()
 		else // (odd == 1)
 		{
 			message.type = NORMAL;
-			message.data[0] = 0;
+			message.data[0] = 1;
 			message.crc = message_crc(&message);
 
 			// Update odd for next time.
