@@ -13,7 +13,7 @@ void setup()
 	message.data[0] = 0;
 	
 	// It's important that the CRC is computed *after* the data has been set;
-	// otherwise it will be wrong.
+	// otherwise it would be wrong.
 	message.crc = message_crc(&message);
 }
 
