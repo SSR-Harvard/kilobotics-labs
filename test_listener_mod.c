@@ -51,11 +51,11 @@ void loop()
 
 void message_rx(message_t *message, distance_measurement_t *distance_measurement)
 {
-	// Set message reception flag.
+	// Set flag on message reception.
 	new_message = 1;
 
-	odd = message->data[0];
 	distance = estimate_distance(distance_measurement);
+	odd = message->data[0];
 }
 
 int main()
