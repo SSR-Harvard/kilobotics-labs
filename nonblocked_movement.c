@@ -11,51 +11,51 @@ uint32_t last_state_update;
 
 void setup()
 {
-	state = FORWARD_GREEN;
-	last_state_update = kilo_ticks;
+    state = FORWARD_GREEN;
+    last_state_update = kilo_ticks;
 }
 
 void loop()
 {
-	// Update state every 64 clock ticks (roughly 2 seconds).
-	if (kilo_ticks > (last_state_update + 64))
-	{
-		last_state_update = kilo_ticks;
-
-		if (state == FORWARD_GREEN)
-		{
-			set_color(RGB(0, 0, 1));
-			spinup_motors();
-			set_motors(kilo_straight_left, kilo_straight_right);
-
-			// Set next state.
-			state = LEFT_RED;
-		}
-		else if (state == LEFT_RED)
-		{
-			set_color(RGB(1, 0, 0));
-			spinup_motors();
-			set_motors(kilo_turn_left, 0);
-
-			// Set next state.
-			state = RIGHT_BLUE;
-		}
-		else if (state == RIGHT_BLUE)
-		{
-			set_color(RGB(0, 0, 1));
-			spinup_motors();
-			set_motors(0, kilo_turn_right);
-
-			// Set next state.
-			state = FORWARD_GREEN;
-		}
-	}
+    // Update state every 64 clock ticks (roughly 2 seconds).
+    if (kilo_ticks > (last_state_update + 64))
+    {
+        last_state_update = kilo_ticks;
+        
+        if (state == FORWARD_GREEN)
+        {
+            set_color(RGB(0, 0, 1));
+            spinup_motors();
+            set_motors(kilo_straight_left, kilo_straight_right);
+            
+            // Set next state.
+            state = LEFT_RED;
+        }
+        else if (state == LEFT_RED)
+        {
+            set_color(RGB(1, 0, 0));
+            spinup_motors();
+            set_motors(kilo_turn_left, 0);
+            
+            // Set next state.
+            state = RIGHT_BLUE;
+        }
+        else if (state == RIGHT_BLUE)
+        {
+            set_color(RGB(0, 0, 1));
+            spinup_motors();
+            set_motors(0, kilo_turn_right);
+            
+            // Set next state.
+            state = FORWARD_GREEN;
+        }
+    }
 }
 
 int main()
 {
-	kilo_init();
-	kilo_start(setup, loop);
-
-	return 0;
+    kilo_init();
+    kilo_start(setup, loop);
+    
+    return 0;
 }
