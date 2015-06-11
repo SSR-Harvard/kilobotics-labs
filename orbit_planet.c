@@ -10,9 +10,8 @@
 #define RIGHT 3
 
 int current_motion = STOP;
-int current_distance = 0;
-int new_message = 0;
 int distance;
+int new_message = 0;
 
 // Function to handle motion.
 void set_motion(int new_motion)
@@ -69,7 +68,7 @@ void loop()
 void message_rx(message_t *m, distance_measurement_t *d)
 {
     new_message = 1;
-    current_distance = estimate_distance(d);
+    distance = estimate_distance(d);
 }
 
 int main()
