@@ -17,7 +17,7 @@ void loop()
 		set_color(RGB(1, 1, 0));
 		delay(100);
 		set_color(RGB(0, 0, 0));
-		}
+	}
 }
 
 // Set flag on message reception.
