@@ -1,7 +1,7 @@
 #include <kilolib.h>
 
-// Since 1 byte (8 bits) of the message is being used to communicate gradients,
-// the maximum possible gradient is 2^8 - 1 = 255.
+// Since 1 byte (8 bits) of the message is used to communicate gradients, the
+// maximum possible gradient is 2^8 - 1 = 255.
 #define GRADIENT_MAX 255
 // This is an arbitrary number, but it's important that exactly one robot in the
 // group is calibrated to have this ID.
