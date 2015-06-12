@@ -1,62 +1,72 @@
 #include <kilolib.h>
 
-// Maximum of an 8-bit number (since we're using 1 byte of the message to send
-// the gradient value).
+// Since 1 byte (8 bits) of the message is used to communicate gradients, the
+// maximum possible gradient is 2^8 - 1 = 255.
 #define GRADIENT_MAX 255
+// This is an arbitrary number, but it's important that exactly one robot in the
+// group is calibrated to have this ID.
+#define SEED_ID 42
 
 int own_gradient = GRADIENT_MAX;
 int received_gradient = 0;
 int new_message = 0;
-uint32_t last_update = 0;
+uint32_t last_gradient_anchored;
 message_t message;
 
 void setup()
 {
-    // If the ID is 42, the robot is the seed its gradient should be 0. Replace
-    // the previously set value of GRADIENT_MAX.
-    if (kilo_uid == 42)
+    //If the robot is the seed, its gradient should be 0: overwrite the 
+	// previously set value of GRADIENT_MAX.
+    if (kilo_uid == SEED_ID)
     {
         own_gradient = 0;
     }
     
-    // Compute the message.
+    // Set the transmission message.
     message.type = NORMAL;
     message.data[0] = own_gradient;
     message.crc = message_crc(&message);
 }
 
 void loop() {
-    
-    // Only listen to messages if you're not the seed.
-    if (kilo_uid != 42)
+	// Only pay attention to messages if this robot is not the seed.
+    if (kilo_uid != SEED_ID)
     {
         if (new_message == 1)
         {
             new_message = 0;
-            
-            if (own_gradient >= received_gradient + 1)
-            {
-                last_update = kilo_ticks;
-            }
-            
+
+			// If a neighbor's gradient is 1 or more less than this robot's
+			// gradient, the latter should not increase.
+			// Set last_gradient_anchored to kilo_ticks to inhibit activation of
+			// the increment statement.
+			if (own_gradient >= received_gradient + 1)
+			{
+				last_gradient_anchored = kilo_ticks;
+			}			
+	 
+            // If a neighbor's gradient is 2 or more less than this robot's 
+			// gradient, reduce the latter to the neighbor's gradient + 1.
             if (own_gradient > received_gradient + 1)
             {
                 own_gradient = received_gradient + 1;
                 
-                // Update the message whenever the gradient changes.
+                // Update the transmission message whenever the gradient changes.
                 message.type = NORMAL;
                 message.data[0] = own_gradient;
                 message.crc = message_crc(&message);
             }
         }
-        
-        if (kilo_ticks > (last_update + 64))
-        {
-            own_gradient = own_gradient + 1;
-        }
+		
+		// If no neighbor with a gradient of 1 or more less than this robot's
+		// gradient is detected within 2 seconds, increment the latter by 1.
+		if (kilo_ticks > (last_gradient_anchored + 64))
+		{
+			own_gradient = own_gradient + 1;
+		}
     }
-    
-    // Set LED color based on gradient.
+	
+    // Set the LED color based on the gradient.
     if (own_gradient == 0)
     {
         set_color(RGB(1, 1, 1)); // White
