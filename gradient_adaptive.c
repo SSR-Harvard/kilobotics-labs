@@ -46,7 +46,7 @@ void loop() {
             }			
 	 
             // If a neighbor's gradient is 2 or more less than this robot's 
-			// gradient, reduce the latter to the neighbor's gradient + 1.
+            // gradient, reduce the latter to the neighbor's gradient + 1.
             if (own_gradient > received_gradient + 1)
             {
                 own_gradient = received_gradient + 1;
@@ -58,12 +58,12 @@ void loop() {
             }
         }
 		
-		// If no neighbor with a gradient of 1 or more less than this robot's
-		// gradient is detected within 2 seconds, increment the latter by 1.
-		if (kilo_ticks > (last_gradient_anchored + 64))
-		{
-			own_gradient = own_gradient + 1;
-		}
+        // If no neighbor with a gradient of 1 or more less than this robot's
+        // gradient is detected within 2 seconds, increment the latter by 1.
+        if (kilo_ticks > (last_gradient_anchored + 64))
+        {
+        	own_gradient = own_gradient + 1;
+        }
     }
 	
     // Set the LED color based on the gradient.
