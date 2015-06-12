@@ -62,7 +62,7 @@ void loop() {
         // gradient is detected within 2 seconds, increment the latter by 1.
         if (kilo_ticks > (last_gradient_anchored + 64))
         {
-	        own_gradient = own_gradient + 1;
+            own_gradient = own_gradient + 1;
         }
     }
 	
