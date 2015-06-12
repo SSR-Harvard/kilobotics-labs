@@ -1,8 +1,10 @@
 #include <kilolib.h>
 
-// Since we're using one byte (8 bits) of the message to communicate gradients,
+// Since 1 byte (8 bits) of the message is being used to communicate gradients,
 // the maximum possible gradient is 2^8 - 1 = 255.
 #define GRADIENT_MAX 255
+// This is an arbitrary number, but it's important that exactly one robot in the
+// group is calibrated to have this ID.
 #define SEED_ID 42
 
 int own_gradient = GRADIENT_MAX;
@@ -12,8 +14,8 @@ message_t message;
 
 void setup()
 {
-    // If the ID is SEED_ID, the robot is the seed and its gradient should be 0:
-    // overwrite the previously set value of GRADIENT_MAX.
+    //If the robot is the seed, its gradient should be 0: overwrite the 
+	// previously set value of GRADIENT_MAX.
     if (kilo_uid == SEED_ID)
     {
         own_gradient = 0;
@@ -26,19 +28,20 @@ void setup()
 }
 
 void loop() {
+	// Only pay attention to messages if this robot is not the seed.
     if (kilo_uid != SEED_ID)
     {
         if (new_message == 1)
         {
             new_message = 0;
             
-            // If a neighbor has a gradient that is 2 or more less than my own,
-            // the gradient needs to be reduced to its gradient + 1.
+            // If a neighbor's gradient is 2 or more less than this robot's 
+			// gradient, reduce the latter to the neighbor's gradient + 1.
             if (own_gradient > received_gradient + 1)
             {
                 own_gradient = received_gradient + 1;
                 
-                // Update the trasmission message whenever the gradient changes.
+                // Update the transmission message whenever the gradient changes.
                 message.type = NORMAL;
                 message.data[0] = own_gradient;
                 message.crc = message_crc(&message);
