@@ -29,21 +29,21 @@ void setup()
 }
 
 void loop() {
-	// Only pay attention to messages if this robot is not the seed.
+    // Only pay attention to messages if this robot is not the seed.
     if (kilo_uid != SEED_ID)
     {
         if (new_message == 1)
         {
             new_message = 0;
 
-			// If a neighbor's gradient is 1 or more less than this robot's
-			// gradient, the latter should not increase.
-			// Set last_gradient_anchored to kilo_ticks to inhibit activation of
-			// the increment statement.
-			if (own_gradient >= received_gradient + 1)
-			{
-				last_gradient_anchored = kilo_ticks;
-			}			
+            // If a neighbor's gradient is 1 or more less than this robot's
+            // gradient, the latter should not increase.
+            // Set last_gradient_anchored to kilo_ticks to inhibit activation of
+            // the increment statement.
+            if (own_gradient >= received_gradient + 1)
+            {
+            	last_gradient_anchored = kilo_ticks;
+            }			
 	 
             // If a neighbor's gradient is 2 or more less than this robot's 
 			// gradient, reduce the latter to the neighbor's gradient + 1.
