@@ -16,7 +16,7 @@ int current_light = 0;
 // Function to handle motion.
 void set_motion(int new_motion)
 {
-    // We only need to take an action if the motion is being changed.
+    // Only take an action if the motion is being changed.
     if (current_motion != new_motion)
     {
         current_motion = new_motion;
