@@ -61,9 +61,9 @@ void loop()
         set_motors(0, 0);
     }
     
-    // Only send the current time if it can fit in 1 byte (8-bits), which
+    // Only send the current time if it can fit in 1 byte (8 bits), which
     // corresponds to a maximum of 2^8 - 1 = 255. Otherwise, set the message
-    // CRC to 0 so that neighbors ignore the message.
+    // CRC to 0 so neighbors ignore the message.
     if ((kilo_ticks - last_reset) < 255)
     {
         message.type = NORMAL;
