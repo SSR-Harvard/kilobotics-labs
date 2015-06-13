@@ -13,7 +13,7 @@ uint32_t last_motion_update = 0;
 // Function to handle motion.
 void set_motion(int new_motion)
 {
-    // We only need to take an action if the motion is being changed.
+    // Only take an an action if the motion is being changed.
     if (current_motion != new_motion)
     {
         current_motion = new_motion;
@@ -53,7 +53,7 @@ void loop()
     {
         last_motion_update = kilo_ticks;
         
-        // If a message was received in the last second, set a random motion.
+        // If a message was received within the last second, set a random motion.
         if (new_message == 1)
         {
             new_message = 0;
@@ -61,34 +61,34 @@ void loop()
             // Generate an 8-bit random number (between 0 and 255).
             int random_number = rand_hard();
             
-            // Compute the remainder of the random number when divided by 4.
+            // Compute the remainder of random_number when divided by 4.
             // This gives a new random number in the set {0, 1, 2, 3}.
             int random_direction = (random_number % 4);
             
             // There is a 50% chance of random_direction being 0 OR 1, in which
-            // case set LED green and move forward.
+            // case set the LED green and move forward.
             if ((random_direction == 0) || (random_direction == 1))
             {
                 set_color(RGB(0, 1, 0));
                 set_motion(FORWARD);
             }
             // There is a 25% chance of random_direction being 2, in which case
-            // set LED red and move left.
+            // set the LED red and move left.
             else if (random_direction == 2)
             {
                 set_color(RGB(1, 0, 0));
                 set_motion(LEFT);
             }
             // There is a 25% chance of random_direction being 3, in which case
-            // set LED blue and move right.
+            // set the LED blue and move right.
             else if (random_direction == 3)
             {
                 set_color(RGB(0, 0, 1));
                 set_motion(RIGHT);
             }
         }
-        // If no message was received in the last second, set LED white and
-        // stop moving.
+        // If no message was received within the last second, set the LED white
+        // and stop moving.
         else
         {
             set_color(RGB(1, 1, 1));
