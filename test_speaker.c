@@ -19,10 +19,10 @@ void setup()
 
 void loop()
 {
-    // Blink LED magenta whenever a message is sent.
+    // Blink the LED magenta whenever a message is sent.
     if (message_sent == 1)
     {
-        // Reset flag so LED is only blinked once per message.
+        // Reset the flag so the LED is only blinked once per message.
         message_sent = 0;
         
         set_color(RGB(1, 0, 1));
@@ -38,16 +38,16 @@ message_t *message_tx()
 
 void message_tx_success()
 {
-    // Set flag on message transmission.
+    // Set the flag on message transmission.
     message_sent = 1;
 }
 
 int main()
 {
     kilo_init();
-    // Register message_tx callback function.
+    // Register the message_tx callback function.
     kilo_message_tx = message_tx;
-    // Register message_tx_success callback function.
+    // Register the message_tx_success callback function.
     kilo_message_tx_success = message_tx_success;
     kilo_start(setup, loop);
     
