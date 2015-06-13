@@ -1,11 +1,11 @@
 #include <kilolib.h>
 
-// Nominal period with which to blink, approximately 2 seconds. This will be
+// Nominal period with which to blink; approximately 2 seconds. This will be
 // be the period of every robot once the swarm has synchronized.
 #define PERIOD 50
 // Affects the size of the reset time adjustment for every discrepancy
 // with a neighbor. A larger value means smaller adjustments. As a rule of thumb
-// this value should increase with the size of the swarm.
+// this value should increase with the average number of neighbors each robot has.
 #define RESET_TIME_ADJUSTMENT_DIVIDER 120
 // A cap on the absolute value of the reset time adjustment.
 #define RESET_TIME_ADJUSTMENT_MAX 30
