@@ -36,7 +36,7 @@ void loop()
         }
     }
     
-    // Blink LED magenta whenever a message is sent.
+    // Blink the LED magenta whenever a message is sent.
     if (message_sent)
     {
         message_sent = 0;
