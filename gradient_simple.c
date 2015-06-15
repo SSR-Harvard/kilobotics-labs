@@ -36,7 +36,7 @@ void loop() {
             new_message = 0;
             
             // If a neighbor's gradient is 2 or more less than this robot's 
-			// gradient, reduce the latter to the neighbor's gradient + 1.
+            // gradient, reduce the latter to the neighbor's gradient + 1.
             if (own_gradient > received_gradient + 1)
             {
                 own_gradient = received_gradient + 1;
