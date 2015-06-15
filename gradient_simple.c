@@ -15,7 +15,7 @@ message_t message;
 void setup()
 {
     //If the robot is the seed, its gradient should be 0: overwrite the 
-	// previously set value of GRADIENT_MAX.
+    // previously set value of GRADIENT_MAX.
     if (kilo_uid == SEED_ID)
     {
         own_gradient = 0;
