@@ -42,7 +42,7 @@ void set_motion(int new_motion)
 
 void setup()
 {
-    // Initialize empty message.
+    // Initialize an empty message.
     message.type = NORMAL;
     message.crc = message_crc(&message);
 }
@@ -58,7 +58,7 @@ void loop()
         {
             new_message = 0;
             
-            // Generate an 8-bit random number (between 0 and 255).
+            // Generate an 8-bit random number (between 0 and 2^8 - 1 = 255).
             int random_number = rand_hard();
             
             // Compute the remainder of random_number when divided by 4.
@@ -87,7 +87,7 @@ void loop()
                 set_motion(RIGHT);
             }
         }
-        // If no message was received within the last second, set the LED white
+        // If no messages were received within the last second, set the LED white
         // and stop moving.
         else
         {
