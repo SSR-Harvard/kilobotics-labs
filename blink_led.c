@@ -21,7 +21,7 @@ void loop()
 
 int main()
 {
-    // Initialize hardware.
+    // Initialize the hardware.
     kilo_init();
     // Register the program.
     kilo_start(setup, loop);
