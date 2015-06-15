@@ -10,7 +10,7 @@
 #define LEFT 2
 #define RIGHT 3
 
-int current_motion;
+int current_motion = STOP;
 int current_light = 0;
 
 // Function to handle motion.
@@ -70,6 +70,8 @@ void sample_light()
 
 void setup()
 {
+    // This ensures that the robot starts moving.
+    set_motion(LEFT);
 }
 
 void loop()
