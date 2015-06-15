@@ -26,7 +26,7 @@ void setup()
     // synchronized by the run signal.
     set_color(RGB(1, 0, 0));
     delay(10 * rand_hard());
-set_color(RGB(0, 0, 0));
+    set_color(RGB(0, 0, 0));
 }
 
 void loop()
