@@ -50,7 +50,7 @@ void setup()
 
 void loop()
 {
-    // Update motion whenever a message is received.
+    // Update the motion whenever a message is received.
     if (new_message == 1)
     {
         new_message = 0;
