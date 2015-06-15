@@ -28,7 +28,7 @@ void setup()
 }
 
 void loop() {
-	// Only pay attention to messages if this robot is not the seed.
+    // Only pay attention to messages if this robot is not the seed.
     if (kilo_uid != SEED_ID)
     {
         if (new_message == 1)
