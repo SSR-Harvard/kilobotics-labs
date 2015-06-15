@@ -66,7 +66,6 @@ void loop()
     // CRC to 0 so neighbors ignore the message.
     if ((kilo_ticks - last_reset) < 255)
     {
-        message.type = NORMAL;
         message.data[0] = (kilo_ticks - last_reset);
         message.crc = message_crc(&message);
     }
