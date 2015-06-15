@@ -1,6 +1,6 @@
 #include <kilolib.h>
 
-// Constant for orbit control.
+// Constants for orbit control.
 #define TOO_CLOSE_DISTANCE 40
 #define DESIRED_DISTANCE 60
 
