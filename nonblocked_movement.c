@@ -26,7 +26,7 @@ void loop()
         
         if (state == FORWARD_GREEN)
         {
-            set_color(RGB(0, 0, 1));
+            set_color(RGB(0, 1, 0));
             spinup_motors();
             set_motors(kilo_straight_left, kilo_straight_right);
             
