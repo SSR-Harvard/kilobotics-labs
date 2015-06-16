@@ -59,7 +59,7 @@ void sample_light()
         // -1 indicates a failed sample, which should be discarded.
         if (sample != -1)
         {
-            average = average + sample;
+            sum = sum + sample;
             number_of_samples = number_of_samples + 1;
         }
     }
