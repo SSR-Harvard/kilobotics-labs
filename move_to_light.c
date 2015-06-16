@@ -1,8 +1,8 @@
 #include <kilolib.h>
 
 // Constants for light following.
-#define THRESH_LO = 300;
-#define THRESH_HI = 600;
+#define THRESH_LO 300
+#define THRESH_HI 600
 
 // Constants for motion handling function.
 #define STOP 0
