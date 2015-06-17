@@ -39,7 +39,7 @@ void loop()
             // ... and odd: set the LED yellow.
             else
             {
-                set_color(RGB(1, 0, 1));
+                set_color(RGB(1, 1, 0));
             }
         }
         
