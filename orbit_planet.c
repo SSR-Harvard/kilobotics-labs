@@ -58,6 +58,7 @@ void loop()
         // If too close, move forward to get back into orbit.
         if (distance < TOO_CLOSE_DISTANCE)
         {
+            set_color(RGB(0, 1, 0));
             set_motion(FORWARD);
         }
         // If not too close, turn left or right depending on distance,
@@ -66,10 +67,12 @@ void loop()
         {
             if (distance < DESIRED_DISTANCE)
             {
+                set_color(RGB(1, 0, 0));
                 set_motion(LEFT);
             }
             else
             {
+                set_color(RGB(0, 0, 1));
                 set_motion(RIGHT);
             }
         }
