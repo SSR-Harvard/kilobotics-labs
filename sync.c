@@ -10,8 +10,8 @@
 // A cap on the absolute value of the reset time adjustment.
 #define RESET_TIME_ADJUSTMENT_MAX 30
 
-int reset_time = 0;
-int last_reset = 0;
+uint32_t reset_time = 0;
+uint32_t last_reset = 0;
 int reset_time_adjustment = 0;
 message_t message;
 
@@ -66,7 +66,7 @@ void loop()
     // CRC to 0 so neighbors ignore the message.
     if ((kilo_ticks - last_reset) < 255)
     {
-        message.data[0] = (kilo_ticks - last_reset);
+        message.data[0] = kilo_ticks - last_reset;
         message.crc = message_crc(&message);
     }
     else
