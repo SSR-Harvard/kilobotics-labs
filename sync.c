@@ -2,12 +2,17 @@
 
 // Nominal period with which to blink; approximately 2 seconds. This will be
 // be the period of every robot once the swarm has synchronized.
-#define PERIOD 64
+#define PERIOD 50
+// Affects the size of the reset time adjustment for every discrepancy
+// with a neighbor. A larger value means smaller adjustments. As a rule of thumb
+// this value should increase with the average number of neighbors each robot has.
+#define RESET_TIME_ADJUSTMENT_DIVIDER 120
+// A cap on the absolute value of the reset time adjustment.
+#define RESET_TIME_ADJUSTMENT_MAX 30
 
 uint32_t reset_time = 0;
 uint32_t last_reset = 0;
 int reset_time_adjustment = 0;
-int num_messages = 0;
 message_t message;
 
 void setup()
@@ -28,13 +33,22 @@ void loop()
 {
     if (kilo_ticks >= reset_time)
     {
-        reset_time_adjustment = (reset_time_adjustment / ((2 * num_messages) + 1));
+        reset_time_adjustment = (reset_time_adjustment / RESET_TIME_ADJUSTMENT_DIVIDER);
+        
+        // Apply a cap to the absolute value of the reset time adjustment.
+        if (reset_time_adjustment < - RESET_TIME_ADJUSTMENT_MAX)
+        {
+            reset_time_adjustment = - RESET_TIME_ADJUSTMENT_MAX;
+        }
+        else if (reset_time_adjustment > RESET_TIME_ADJUSTMENT_MAX)
+        {
+            reset_time_adjustment = RESET_TIME_ADJUSTMENT_MAX;
+        }
         
         last_reset = kilo_ticks;
         reset_time = kilo_ticks + PERIOD + reset_time_adjustment;
         
         reset_time_adjustment = 0;
-        num_messages = 0;
         
         // Set the LED white and turn the motors on.
         set_color(RGB(1, 1, 1));
@@ -68,8 +82,6 @@ message_t *message_tx()
 
 void message_rx(message_t *m, distance_measurement_t *d)
 {
-    num_messages = num_messages + 1;
-    
     int my_timer = kilo_ticks - last_reset;
     int rx_timer = m->data[0];
     int timer_discrepancy = my_timer - rx_timer;
