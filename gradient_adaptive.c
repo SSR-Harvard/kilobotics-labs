@@ -60,7 +60,7 @@ void loop() {
 		
         // If no neighbor with a gradient of 1 or more less than this robot's
         // gradient is detected within 2 seconds, increment the latter by 1.
-        if (kilo_ticks > (last_gradient_anchored + 64))
+        if ((kilo_ticks > (last_gradient_anchored + 64)) && (own_gradient < GRADIENT_MAX))
         {
             own_gradient = own_gradient + 1;
         }
