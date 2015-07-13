@@ -34,8 +34,6 @@ void loop() {
     {
         if (new_message == 1)
         {
-            new_message = 0;
-
             // If a neighbor's gradient is 1 or more less than this robot's
             // gradient, the latter should not increase.
             // Set last_gradient_anchored to kilo_ticks to inhibit activation of
@@ -56,6 +54,8 @@ void loop() {
                 message.data[0] = own_gradient;
                 message.crc = message_crc(&message);
             }
+            
+            new_message = 0;
         }
 		
         // If no neighbor with a gradient of 1 or more less than this robot's
@@ -100,8 +100,12 @@ message_t *message_tx()
 
 void message_rx(message_t *m, distance_measurement_t *d)
 {
-    new_message = 1;
-    received_gradient = m->data[0];
+    // Only process this message if the previous one has been processed.
+    if (new_message == 0)
+    {
+        new_message = 1;
+        received_gradient = m->data[0];
+    }
 }
 
 int main()
