@@ -44,9 +44,9 @@ void message_tx_success()
 int main()
 {
     kilo_init();
-    // Register message_tx callback function.
+    // Register the message_tx callback function.
     kilo_message_tx = message_tx;
-    // Register message_tx_success callback function.
+    // Register the message_tx_success callback function.
     kilo_message_tx_success = message_tx_success;
     kilo_start(setup, loop);
     
